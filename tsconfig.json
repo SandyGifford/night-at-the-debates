@@ -25,6 +25,9 @@
 			],
 			"@devComponents/*": [
 				"./src/dev/client/components/*"
+			],
+			"@components/*": [
+				"./src/prod/client/components/*"
 			]
 		}
 	}

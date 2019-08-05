@@ -48,6 +48,10 @@ export default class DevApp extends React.PureComponent<DevAppProps, DevAppState
 	}
 
 	private buildSuccess = () => {
+		this.setState({
+			errors: [],
+		});
+
 		this.incrementBuild();
 	};
 
