@@ -1,0 +1,31 @@
+{
+	"compilerOptions": {
+		"target": "es2018",
+		"noUnusedLocals": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitAny": true,
+		"esModuleInterop": true,
+		"alwaysStrict": true,
+		"jsx": "react",
+		"baseUrl": "./",
+		"sourceMap": true,
+		"paths": {
+			"@server/*": [
+				"./src/prod/server/*"
+			],
+			"@client/*": [
+				"./src/prod/client/*"
+			],
+			"@utils/*": [
+				"./src/shared/utils/*"
+			],
+			"@typings/*": [
+				"./src/shared/typings/*"
+			],
+			"@devComponents/*": [
+				"./src/dev/client/components/*"
+			]
+		}
+	}
+}

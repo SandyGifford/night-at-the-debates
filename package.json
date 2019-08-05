@@ -1,0 +1,33 @@
+{
+  "name": "night-at-the-debates",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev ./src/dev/server/devServer.ts"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.0",
+    "@types/fs-extra": "^8.0.0",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "@types/socket.io": "^2.1.2",
+    "@types/socket.io-client": "^1.4.32",
+    "@types/webpack": "^4.32.1",
+    "css-loader": "^3.1.0",
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "sass-loader": "^7.1.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.3",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  }
+}
