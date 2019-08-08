@@ -1,5 +1,5 @@
 export interface Player {
-	isAdmin: boolean;
+	canAdmin: boolean;
 	username: string;
 	uuid: string;
 }
