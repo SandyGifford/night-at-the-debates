@@ -2,13 +2,14 @@ import express from "express";
 import path from "path";
 
 const app = express();
-
 const rootDir = process.cwd();
 const distDir = path.resolve(rootDir, "dist");
-const prodPath = path.resolve(distDir, "index.html");
-const devPath = path.resolve(__dirname, "dev.html");
 
-app.get("/", (req, res) => res.sendFile(devPath));
-app.get("/prod", (req, res) => res.sendFile(prodPath));
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+app.get("/", (req, res) => res.render("index"));
+app.get("/appPort", (req, res) => res.send({ port: 3001 }));
+app.get(/^\/(assets|build)\/.*/, (req, res) => res.sendFile(path.join(distDir, req.url)));
 
 export default app;

@@ -1,20 +1,38 @@
 console.clear();
 
-// console.log("[0m[31;1m[tsl]");
-// console.log("[0m[31m[tsl]");
-
 import addWebpack from "./addWebpack";
-import makeProdServer from "../../prod/server/makeProdServer";
 import fs from "fs-extra";
 import path from "path";
+import express from "express";
 import routing from "./routing";
+import http from "http";
+import getPort from "../getPort";
+import prodApp from "../../prod/server/server";
 
-makeProdServer()
-	.then(serverData => {
+fs.emptyDir(path.resolve(process.cwd(), "dist", "build"));
+
+getPort(3000)
+	.then(devPort => {
+		const devApp = express();
+		devApp.use(routing);
+
 		fs.emptyDir(path.resolve(process.cwd(), "dist", "build"));
-		serverData.app.use(routing);
+		devApp.use(routing);
 
-		addWebpack(serverData.server, () => {
-			console.log(`App ready.  Listening at http://localhost:${serverData.port}`);
+		const devServer = http.createServer(devApp);
+
+		devServer.listen(devPort, () => {
+			addWebpack(devServer, () => {
+				console.log(`Dev ready.  Listening at http://localhost:${devPort}`);
+			});
 		});
+
+		getPort(3000)
+			.then(appPort => {
+				const prodServer = http.createServer(prodApp);
+
+				prodServer.listen(appPort, () => {
+					console.log(`App ready on port ${appPort}`);
+				});
+			});
 	});

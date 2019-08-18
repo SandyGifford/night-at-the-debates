@@ -1,4 +1,11 @@
-import makeProdServer from "./makeProdServer";
+console.clear();
 
-makeProdServer(3000)
-	.then(serverData => console.log(`App started.  Go to http://localhost:${serverData.port}`));
+import express from "express";
+import routing from "./routing";
+
+const app = express();
+app.use(routing);
+
+app.use(routing);
+
+export default app;

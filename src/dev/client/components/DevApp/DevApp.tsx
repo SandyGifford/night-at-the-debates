@@ -7,6 +7,7 @@ export interface DevAppProps { }
 export interface DevAppState {
 	errors: string[];
 	buildCount: number;
+	port: number;
 }
 
 export default class DevApp extends React.PureComponent<DevAppProps, DevAppState> {
@@ -17,12 +18,19 @@ export default class DevApp extends React.PureComponent<DevAppProps, DevAppState
 		this.state = {
 			errors: [],
 			buildCount: 0,
+			port: null,
 		};
 	}
 
 	public componentDidMount() {
 		this.socket.on("buildSuccess", this.buildSuccess);
 		this.socket.on("buildFail", this.buildFail);
+
+		fetch("/appPort")
+			.then(r => r.json())
+			.then(r => this.setState({
+				port: r.port,
+			}));
 	}
 
 	public componentWillUnmount() {
@@ -31,11 +39,13 @@ export default class DevApp extends React.PureComponent<DevAppProps, DevAppState
 	}
 
 	public render(): React.ReactNode {
-		const { errors, buildCount } = this.state;
+		const { errors, buildCount, port } = this.state;
+
+		if (!port) return null;
 
 		return (
 			<div className="DevApp">
-				<iframe className="DevApp__app" src={`/prod?b=${buildCount}`} />
+				<iframe className="DevApp__app" src={`http://localhost:${port}/?b=${buildCount}`} />
 				{
 					errors.length ?
 						<div className="DevApp__errors">{

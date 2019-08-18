@@ -5,13 +5,11 @@ const app = express();
 
 const rootDir = process.cwd();
 const distDir = path.resolve(rootDir, "dist");
-const htmlPath = path.resolve(distDir, "index.html");
 
-app.get("/", (req, res, next) => {
-	// TODO: not really a fan of this, would like to do this from the dev routing file
-	if (process.env.NODE_ENV) next();
-	else res.sendFile(htmlPath)
-});
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+app.get("/", (req, res) => res.render("index"));
 app.get(/^\/(assets|build)\/.*/, (req, res) => res.sendFile(path.join(distDir, req.url)));
 
 export default app;
