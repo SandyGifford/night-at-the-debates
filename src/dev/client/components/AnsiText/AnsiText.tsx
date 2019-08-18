@@ -1,8 +1,8 @@
 import "./AnsiText.style";
 
 import * as React from "react";
-import { ANSIToken, ANSIColor, ANSIIntensity } from "@typings/ansi";
-import AnsiUtils from "@utils/AnsiUtils";
+import { ANSIToken, ANSIColor, ANSIIntensity } from "src/dev/shared/typings/ansi";
+import AnsiUtils from "src/dev/shared/utils/AnsiUtils";
 
 export interface AnsiTextProps {
 	ansiStr: string;

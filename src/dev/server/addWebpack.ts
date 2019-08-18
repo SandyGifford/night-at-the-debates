@@ -2,11 +2,9 @@ import webpack from "webpack";
 import socket from "socket.io";
 import webpackConfig from "../../../webpack.config";
 import { Server } from "http";
-import socketSession from "../../shared/expressSessions/socketSession";
 
 export default (server: Server, buildComplete = () => { }) => {
 	const io = socket(server);
-	io.use(socketSession);
 
 	let lastFail: string[];
 

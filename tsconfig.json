@@ -12,7 +12,7 @@
 		"sourceMap": true,
 		"paths": {
 			"@server/*": [
-				"./src/prod/server/*"
+				"dist/server/*"
 			],
 			"@client/*": [
 				"./src/prod/client/*"
@@ -21,7 +21,7 @@
 				"./src/shared/utils/*"
 			],
 			"@typings/*": [
-				"./src/shared/typings/*"
+				"src/prod/shared/typings/*"
 			],
 			"@devComponents/*": [
 				"./src/dev/client/components/*"

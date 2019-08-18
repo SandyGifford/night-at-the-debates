@@ -1,4 +1,4 @@
-import { ANSIStyle, ANSIToken } from "@typings/ansi";
+import { ANSIStyle, ANSIToken } from "src/dev/shared/typings/ansi";
 
 export default class AnsiUtils {
 	private static readonly MUTATIONS: { [key: string]: Partial<ANSIStyle> } & { "0": ANSIStyle } = {

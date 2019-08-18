@@ -7,7 +7,7 @@ import express from "express";
 import routing from "./routing";
 import http from "http";
 import getPort from "../getPort";
-import prodApp from "../../prod/server/server";
+import prodApp from "../../../dist/server/server";
 
 fs.emptyDir(path.resolve(process.cwd(), "dist", "build"));
 
