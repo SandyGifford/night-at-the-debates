@@ -18,10 +18,10 @@
 				"./src/prod/client/*"
 			],
 			"@utils/*": [
-				"./src/shared/utils/*"
+				"./dist/shared/utils/*"
 			],
 			"@typings/*": [
-				"src/prod/shared/typings/*"
+				"./dist/shared/typings/*"
 			],
 			"@devComponents/*": [
 				"./src/dev/client/components/*"
