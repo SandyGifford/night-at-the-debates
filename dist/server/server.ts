@@ -6,6 +6,4 @@ import routing from "./routing";
 const app = express();
 app.use(routing);
 
-app.use(routing);
-
 export default app;

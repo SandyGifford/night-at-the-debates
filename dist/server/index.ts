@@ -7,5 +7,5 @@ const PORT = 3000;
 const server = http.createServer(app);
 
 server.listen(PORT, () => {
-	console.log(`App ready.  Listening at http://localhost:${PORT}`);
+	console.log(`App ready.  Listening on port ${PORT}`);
 });
