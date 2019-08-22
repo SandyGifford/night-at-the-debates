@@ -1,27 +1,20 @@
-export interface GameRoundTypeMap {
-	"debate": DebateRoundData;
+import { DebateRoundConfig } from "@client/components/DebateRound/DebateRound.types";
+import { DrawRoundConfig } from "@client/components/DrawRound/DrawRound.types";
+
+export type GameRoundType = "debate" | "draw";
+export type GameRoundTypeMap<T> = { [type in GameRoundType]: T }
+
+export interface GameRoundDataMapping<CONFIG> {
+	config: CONFIG;
 }
 
-export type GameRoundType = keyof GameRoundTypeMap;
+export type GameRoundTypeConfig<ROUND_TYPE extends GameRoundType> = GameRoundDataMap[ROUND_TYPE]["config"];
 
-export interface Game {
-	admin: string;
-	players: string[];
-	rounds: GameRound<GameRoundType>[];
-}
-
-export interface GameRound<T extends GameRoundType> {
-	type: T;
-	data: GameRoundTypeMap[T];
-}
-
-export interface DebateRoundData {
-	topics: DebateTopic[];
-	currentTopic: number;
-}
-
-export interface DebateTopic {
-	text: string;
-	sides: string[];
-	votes: number[];
+export interface GameRoundDataMap extends GameRoundTypeMap<GameRoundDataMapping<any>> {
+	debate: {
+		config: DebateRoundConfig;
+	},
+	draw: {
+		config: DrawRoundConfig;
+	}
 }
